@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:get/get.dart';
-import 'package:quiz_application/core/constants/app_constants.dart';
-import 'package:quiz_application/routes/app_routes.dart';
+import 'core/constants/app_constants.dart';
 import 'core/theme/app_theme.dart';
+import 'core/theme/theme_controller.dart';
+import 'routes/app_routes.dart';
 
-
-
-void main() => runApp(MyApp());
+void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  runApp(const MyApp());
+}
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -18,15 +20,14 @@ class MyApp extends StatelessWidget {
       child: GetMaterialApp(
         debugShowCheckedModeBanner: false,
         title: AppConstants.appName,
-        // theme: AppTheme.lightTheme,
-        // darkTheme: AppTheme.darkTheme,
-        // themeMode: ThemeMode.system,
         theme: AppTheme.lightTheme,
         darkTheme: AppTheme.darkTheme,
-
         themeMode: ThemeMode.light,
         initialRoute: AppRoutes.splash,
         getPages: AppRoutes.routes,
+        initialBinding: BindingsBuilder(() {
+          Get.put(ThemeController());
+        }),
       ),
     );
   }
