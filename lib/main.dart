@@ -18,9 +18,13 @@ class MyApp extends StatelessWidget {
       child: GetMaterialApp(
         debugShowCheckedModeBanner: false,
         title: AppConstants.appName,
+        // theme: AppTheme.lightTheme,
+        // darkTheme: AppTheme.darkTheme,
+        // themeMode: ThemeMode.system,
         theme: AppTheme.lightTheme,
         darkTheme: AppTheme.darkTheme,
-        themeMode: ThemeMode.system,
+
+        themeMode: ThemeMode.light,
         initialRoute: AppRoutes.splash,
         getPages: AppRoutes.routes,
       ),
